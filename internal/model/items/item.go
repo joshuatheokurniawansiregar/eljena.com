@@ -93,38 +93,38 @@ func GetItemsByCategories() []Category {
 }
 
 func GetItemsByCategoriesForProgram() []Category {
-	// var goesToSchoolItems []Item = []Item{
-	// 	{
-	// 		ItemName:    "Aero",
-	// 		Tags:        []string{"program", "technology", "science", "science", "science", "science", "science"},
-	// 		Description: "This is description of Aero Glider",
-	// 		Url:         "/assets/Aero-Glider.jpg",
-	// 	},
-	// 	{
-	// 		ItemName:    "Aero",
-	// 		Tags:        []string{"program", "technology", "science", "science", "science", "science", "science"},
-	// 		Description: "This is description of Aero Glider",
-	// 		Url:         "/assets/Aero-Glider.jpg",
-	// 	},
-	// 	{
-	// 		ItemName:    "Aero",
-	// 		Tags:        []string{"program", "technology", "science", "science", "science", "science", "science"},
-	// 		Description: "This is description of Aero Glider",
-	// 		Url:         "/assets/Aero-Glider.jpg",
-	// 	},
-	// 	{
-	// 		ItemName:    "Aero",
-	// 		Tags:        []string{"program", "technology", "science", "science", "science", "science", "science"},
-	// 		Description: "This is description of Aero Glider",
-	// 		Url:         "/assets/Aero-Glider.jpg",
-	// 	},
-	// 	{
-	// 		ItemName:    "Aero",
-	// 		Tags:        []string{"program", "technology", "science", "science", "science", "science", "science"},
-	// 		Description: "This is description of Aero Glider",
-	// 		Url:         "/assets/Aero-Glider.jpg",
-	// 	},
-	// }
+	var goesToSchoolItems []Item = []Item{
+		{
+			ItemName:    "Aero",
+			Tags:        []string{"program", "technology", "science", "science", "science", "science", "science"},
+			Description: "This is description of Aero Glider",
+			Url:         "/assets/Aero-Glider.jpg",
+		},
+		{
+			ItemName:    "Aero",
+			Tags:        []string{"program", "technology", "science", "science", "science", "science", "science"},
+			Description: "This is description of Aero Glider",
+			Url:         "/assets/Aero-Glider.jpg",
+		},
+		{
+			ItemName:    "Aero",
+			Tags:        []string{"program", "technology", "science", "science", "science", "science", "science"},
+			Description: "This is description of Aero Glider",
+			Url:         "/assets/Aero-Glider.jpg",
+		},
+		{
+			ItemName:    "Aero",
+			Tags:        []string{"program", "technology", "science", "science", "science", "science", "science"},
+			Description: "This is description of Aero Glider",
+			Url:         "/assets/Aero-Glider.jpg",
+		},
+		{
+			ItemName:    "Aero",
+			Tags:        []string{"program", "technology", "science", "science", "science", "science", "science"},
+			Description: "This is description of Aero Glider",
+			Url:         "/assets/Aero-Glider.jpg",
+		},
+	}
 
 	var categories []Category = []Category{
 		{
@@ -133,7 +133,7 @@ func GetItemsByCategoriesForProgram() []Category {
 				{
 					SubCategoryName: "Goes To School",
 					SubCategoryTag:  "goes_to_school",
-					// Items:           goesToSchoolItems,
+					Items:           goesToSchoolItems,
 				},
 			},
 		},
@@ -143,35 +143,35 @@ func GetItemsByCategoriesForProgram() []Category {
 
 func GetItemsByCategoriesForServices() []Category {
 
-	// var digitalMarketingItems []Item = []Item{
-	// 	{
-	// 		ItemName:    "SEO Management",
-	// 		Tags:        []string{"program", "technology", "science", "science", "science", "science", "science"},
-	// 		Description: "This is description of Aero Glider",
-	// 		Url:         "/assets/Aero-Glider.jpg",
-	// 	},
-	// 	{
-	// 		ItemName:    "Landing Page Development",
-	// 		Tags:        []string{"program", "technology", "science", "science", "science", "science", "science"},
-	// 		Description: "This is description of Aero Glider",
-	// 		Url:         "/assets/Aero-Glider.jpg",
-	// 	},
-	// }
+	var digitalMarketingItems []Item = []Item{
+		{
+			ItemName:    "SEO Management",
+			Tags:        []string{"program", "technology", "science", "science", "science", "science", "science"},
+			Description: "This is description of Aero Glider",
+			Url:         "/assets/Aero-Glider.jpg",
+		},
+		{
+			ItemName:    "Landing Page Development",
+			Tags:        []string{"program", "technology", "science", "science", "science", "science", "science"},
+			Description: "This is description of Aero Glider",
+			Url:         "/assets/Aero-Glider.jpg",
+		},
+	}
 
-	// var gardenItems []Item = []Item{
-	// 	{
-	// 		ItemName:    "Vertical Garden",
-	// 		Tags:        []string{"program", "technology", "science", "science", "science", "science", "science"},
-	// 		Description: "This is description of Aero Glider",
-	// 		Url:         "/assets/Aero-Glider.jpg",
-	// 	},
-	// 	{
-	// 		ItemName:    "Horizontal Garden",
-	// 		Tags:        []string{"program", "technology", "science", "science", "science", "science", "science"},
-	// 		Description: "This is description of Aero Glider",
-	// 		Url:         "/assets/Aero-Glider.jpg",
-	// 	},
-	// }
+	var gardenItems []Item = []Item{
+		{
+			ItemName:    "Vertical Garden",
+			Tags:        []string{"program", "technology", "science", "science", "science", "science", "science"},
+			Description: "This is description of Aero Glider",
+			Url:         "/assets/Aero-Glider.jpg",
+		},
+		{
+			ItemName:    "Horizontal Garden",
+			Tags:        []string{"program", "technology", "science", "science", "science", "science", "science"},
+			Description: "This is description of Aero Glider",
+			Url:         "/assets/Aero-Glider.jpg",
+		},
+	}
 
 	var categories []Category = []Category{
 		{
@@ -180,13 +180,13 @@ func GetItemsByCategoriesForServices() []Category {
 				{
 					SubCategoryName: "Digital Marketing",
 					SubCategoryTag:  "digital_marketing",
-					// Items:           digitalMarketingItems,
+					Items:           digitalMarketingItems,
 				},
 
 				{
 					SubCategoryName: "Garden",
 					SubCategoryTag:  "garden",
-					// Items:           gardenItems,
+					Items:           gardenItems,
 				},
 			},
 		},
