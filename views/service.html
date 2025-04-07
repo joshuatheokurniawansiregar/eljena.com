@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Service</title>
+    <script src="/assets/navbar.js"></script>
+    <script src="/assets/footer.js"></script>
+    <link rel="stylesheet" href="/assets/app.css" />
+  </head>
+  <body>
+    <body class="antialiased">
+      {{block "navbar" .}}{{end}}
+      <main class="relative w-full flex flex-col">
+        {{range .categories}}
+        <h3 class="self-center font-bold mt-10 mb-3">{{.CategoryName}}</h3>
+        {{range .SubCategories}}
+        <article class="flex flex-col mx-10">
+          <h4 class="font-bold xs:mx-6 lg:mx-0">{{.SubCategoryName}}</h4>
+          <section
+            class="grid xs:grid-rows-1 md:grid-cols-3 max-w-full xs:mx-auto lg:-mx-4"
+          >
+            {{range .Items}}
+            <div
+              class="max-w-sm my-3 mx-4 rounded overflow-hidden shadow-2xl -inset-x-16"
+            >
+              <img class="w-full" src="/assets/Aero-Glider.jpg" alt="" />
+              <div class="px-6 py-4">
+                <div class="font-bold text-xl mb-2">{{.ItemName}}</div>
+                <p class="text-gray-700 text-base">{{ .Description }}</p>
+              </div>
+              <div class="px-6 pt-4 pb-2">
+                {{range $val:=.Tags}}
+                <span
+                  class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2"
+                  >#{{$val}}</span
+                >
+                {{end}}
+              </div>
+            </div>
+            {{end}}
+          </section>
+        </article>
+        {{end}} {{end}} {{block "footer" .}} {{end}}
+      </main>
+    </body>
+  </body>
+</html>

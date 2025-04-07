@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Beranda</title>
+    <script src="/assets/navbar.js"></script>
+    <script src="/assets/carousel.js"></script>
+    <script src="/assets/footer.js"></script>
+    <link rel="stylesheet" href="/assets/app.css" />
+  </head>
+  <body class="antialiased">
+    {{block "navbar" .}}{{end}}
+    <main class="relative top-6 w-full flex flex-col">
+      <h1 class="self-center font-bold my-5">Program dan Layanan</h1>
+      <article
+        class="w-full flex xs:flex-col lg:flex-row"
+        id="carousel-container"
+      >
+        <div class="max-w-md mx-auto w-1/2">
+          <h2 class="font-bold mx-2" id="carousel-item-name"></h2>
+          <h4 class="font-bold mx-2" id="carousel-sub-category"></h4>
+          <ul class="flex flex-row flex-wrap text-xs" id="carousel-tags"></ul>
+          <p class="text-justify mx-2" id="carousel-description"></p>
+        </div>
+        <div class="relative mx-auto max-w-xs w-1/2 overflow-hidden">
+          <div
+            class="flex flex-row justify-around transition-transform ease-in-out duration-500"
+            id="carousel-image"
+          ></div>
+          <div
+            class="absolute h-full top-1/2 left-0 right-0 flex justify-between -translate-y-1/2 inset-0"
+          >
+            <button
+              class="bg-black bg-opacity-15 hover:bg-opacity-50 h-full text-white px-4 py-2"
+              id="prevSlideButton"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  fill="currentColor"
+                  d="m4 10l9 9l1.4-1.5L7 10l7.4-7.5L13 1z"
+                />
+              </svg>
+            </button>
+            <button
+              class="bg-black bg-opacity-15 hover:bg-opacity-50 text-white px-4 py-2"
+              id="nextSlideButton"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  fill="currentColor"
+                  d="M7 1L5.6 2.5L13 10l-7.4 7.5L7 19l9-9z"
+                />
+              </svg>
+            </button>
+          </div>
+          <div class="absolute bottom-4 right-0 left-0">
+            <div
+              class="flex items-center justify-center gap-2"
+              id="carousel-indicator-container"
+            ></div>
+          </div>
+        </div>
+      </article>
+      {{range .categories}}
+      <h3 class="self-center font-bold mt-10 mb-3">{{.CategoryName}}</h3>
+      {{range .SubCategories}}
+      <article class="flex flex-col mx-10">
+        <h4 class="font-bold xs:mx-6 lg:mx-0">{{.SubCategoryName}}</h4>
+        <section
+          class="grid xs:grid-rows-1 md:grid-cols-3 max-w-full xs:mx-auto lg:-mx-4"
+        >
+          {{range .Items}}
+          <div
+            class="max-w-sm my-3 mx-4 rounded overflow-hidden shadow-2xl -inset-x-16"
+          >
+            <img class="w-full" src="/assets/Aero-Glider.jpg" alt="" />
+            <div class="px-6 py-4">
+              <div class="font-bold text-xl mb-2">{{.ItemName}}</div>
+              <p class="text-gray-700 text-base">{{ .Description }}</p>
+            </div>
+            <div class="px-6 pt-4 pb-2">
+              {{range $val:=.Tags}}
+              <span
+                class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2"
+                >#{{$val}}</span
+              >
+              {{end}}
+            </div>
+          </div>
+          {{end}}
+        </section>
+      </article>
+      {{end}} {{end}}
+    </main>
+    {{block "footer" .}} {{end}}
+  </body>
+</html>
