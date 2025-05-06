@@ -2,7 +2,7 @@ package web
 
 import (
 	"github.com/gofiber/fiber/v2"
-	"github.com/joshuatheokurniawansiregar/my_gin_app/internal/model/items"
+	"github.com/joshuatheokurniawansiregar/eljena/internal/models/items"
 )
 
 

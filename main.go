@@ -1,11 +1,20 @@
 package main
 
 import (
+	"fmt"
+	"log"
+	"os"
+
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/cors"
 	"github.com/gofiber/template/html/v2"
-	"github.com/joshuatheokurniawansiregar/my_gin_app/internal/handlers/api"
-	"github.com/joshuatheokurniawansiregar/my_gin_app/internal/handlers/web"
+	"github.com/joho/godotenv"
+	"github.com/joshuatheokurniawansiregar/eljena/internal/handlers/api"
+	"github.com/joshuatheokurniawansiregar/eljena/internal/handlers/users_handler"
+	"github.com/joshuatheokurniawansiregar/eljena/internal/handlers/web"
+	"github.com/joshuatheokurniawansiregar/eljena/internal/repository/users_repository"
+	"github.com/joshuatheokurniawansiregar/eljena/internal/service/users_service"
+	"github.com/joshuatheokurniawansiregar/eljena/pkg/internalsql"
 )
 
 func main() {
@@ -25,6 +34,8 @@ func main() {
 	// 	})
 	// })
 	// r.Run(":3000")
+	godotenv.Load(".env")
+	var dataSourceName string = fmt.Sprintf("postgres://%s:%s@%s:%s/%s?sslmode=disable", os.Getenv("POSTGRESQL_USER"), os.Getenv("POSTGRESQL_PASSSWORD"),os.Getenv("POSTGRESQL_HOST"), os.Getenv("POSTGRESQL_PORT"), os.Getenv("POSTGRESQL_DB"))
 
 	engine:= html.New("./views", ".html")
 	app:= fiber.New(fiber.Config{
@@ -43,6 +54,16 @@ func main() {
 	// api route
 	var apiHandler *api.Handler = api.NewHandler(app)
 	apiHandler.RegisterRoute()
+
+	var db, err = internalsql.Connect(dataSourceName)
+	if err != nil{
+		log.Println(err.Error())
+	}
+
+	var usersRepository *users_repository.Repository = users_repository.NewRepository(db)
+	var usersService *users_service.Service = users_service.NewService(usersRepository)
+	var usersHandler *users_handler.Handler = users_handler.NewHandler(app, usersService)
+	usersHandler.RegisterRoute()
 
 	app.Listen(":3000")
 }
