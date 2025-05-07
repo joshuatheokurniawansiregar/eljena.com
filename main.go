@@ -10,9 +10,12 @@ import (
 	"github.com/gofiber/template/html/v2"
 	"github.com/joho/godotenv"
 	"github.com/joshuatheokurniawansiregar/eljena/internal/handlers/api"
+	"github.com/joshuatheokurniawansiregar/eljena/internal/handlers/items_handler"
 	"github.com/joshuatheokurniawansiregar/eljena/internal/handlers/users_handler"
 	"github.com/joshuatheokurniawansiregar/eljena/internal/handlers/web"
+	"github.com/joshuatheokurniawansiregar/eljena/internal/repository/items_repository"
 	"github.com/joshuatheokurniawansiregar/eljena/internal/repository/users_repository"
+	"github.com/joshuatheokurniawansiregar/eljena/internal/service/items_service"
 	"github.com/joshuatheokurniawansiregar/eljena/internal/service/users_service"
 	"github.com/joshuatheokurniawansiregar/eljena/pkg/internalsql"
 )
@@ -60,10 +63,17 @@ func main() {
 		log.Println(err.Error())
 	}
 
+	defer db.Close()
+
 	var usersRepository *users_repository.Repository = users_repository.NewRepository(db)
 	var usersService *users_service.Service = users_service.NewService(usersRepository)
 	var usersHandler *users_handler.Handler = users_handler.NewHandler(app, usersService)
 	usersHandler.RegisterRoute()
+
+	var itemsRepository *items_repository.Repository = items_repository.NewRepository(db)
+	var itemsService *items_service.Service = items_service.NewService(itemsRepository)
+	var itemsHandler *items_handler.Handler = items_handler.NewHandler(app, itemsService)
+	itemsHandler.RegisterRoute()
 
 	app.Listen(":3000")
 }
