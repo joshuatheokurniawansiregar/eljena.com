@@ -9,6 +9,7 @@ import (
 
 type ItemsService interface {
 	CreateCategory(ctx context.Context, categoryReq items.CategoriesRequest)error
+	CreateSubCategory(ctx context.Context, subCategoryRequest items.SubCategoriesRequest) error
 }
 
 type Handler struct{
@@ -26,4 +27,5 @@ func NewHandler(app *fiber.App, itemsService ItemsService)*Handler{
 func(h *Handler) RegisterRoute(){
 	var groupRouter fiber.Router = h.Group("/api/v1")
 	groupRouter.Post("/categories", h.CreateCategory)
+	groupRouter.Post("/sub_categories", h.CreateSubCategory)
 }
