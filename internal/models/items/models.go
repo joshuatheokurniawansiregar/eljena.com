@@ -12,3 +12,7 @@ type ItemsModel struct {
 	SubCategoryID int64  `db:"sub_category_id"`
 	ItemName      string `db:"item_name"`
 }
+
+// type ItemsModel struct{
+
+// }
