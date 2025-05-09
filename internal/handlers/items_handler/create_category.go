@@ -28,6 +28,6 @@ func (h *Handler) CreateCategory(ctx *fiber.Ctx) error {
 	return ctx.JSON(fiber.Map{
 		"code": http.StatusInternalServerError,
 		"message": "Category has been created",
-		"data": nil,
+		"data": categoryRequest,
 	})
 }

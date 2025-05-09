@@ -28,8 +28,8 @@ func (h *Handler) CreateSubCategory(ctx *fiber.Ctx) error {
 	}
 
 	return ctx.JSON(fiber.Map{
-		"code": http.StatusInternalServerError,
+		"code": http.StatusOK,
 		"message": "Create a new sub category succeed",
-		"data": nil,
+		"data": subCategoryRequest,
 	})
 }

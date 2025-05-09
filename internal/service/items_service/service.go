@@ -9,6 +9,7 @@ import (
 type ItemsRepository interface {
 	CreateCategory(ctx context.Context, categoryModel items.CategoriesModel)error
 	CreateSubCategory(ctx context.Context, subCategoriesModel items.SubCategoriesModel) error
+	CreateItem(ctx context.Context, itemsModel items.ItemsModel) error
 }
 
 type Service struct{

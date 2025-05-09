@@ -12,6 +12,7 @@ type SubCategoriesRequest struct {
 }
 
 type SubCategoriesModel struct {
+	ID 				int64 `db:"id"`
 	UserID          int64  `db:"user_id"`
 	CategoryID      int64  `db:"category_id"`
 	SubCategoryName string `db:"sub_category_name"`
