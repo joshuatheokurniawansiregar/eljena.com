@@ -12,6 +12,10 @@ type ItemsRepository interface {
 	CreateItem(ctx context.Context, itemsModel items.ItemsModel) error
 	CreateTag(context context.Context, tagModel items.TagsModel) error
 	CreateItemTag(ctx context.Context, itemTagsModel items.ItemTagsModel) error
+
+	GetCategories(ctx context.Context) ([]items.CategoriesResponse , error)
+	GetSubCategories(ctx context.Context)([]items.SubCategoriesResponse, error)
+	GetItemsForCarousel()
 }
 
 type Service struct{

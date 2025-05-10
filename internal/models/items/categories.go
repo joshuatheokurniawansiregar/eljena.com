@@ -8,3 +8,8 @@ type CategoriesModel struct {
 type CategoriesRequest struct {
 	CategoryName string `json:"categoryName"`
 }
+
+type CategoriesResponse struct {
+	ID           int64  `json:"ID"`
+	CategoryName string `json:"categoryName"`
+}

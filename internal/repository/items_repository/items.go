@@ -14,3 +14,14 @@ func (r *Repository) CreateItem(ctx context.Context, itemsModel items.ItemsModel
 	}
 	return nil
 }
+
+func(r *Repository) GetItemsForCarousel(){
+	// var query string = `
+	// 	SELECT i.id, i.item_name, s.sub_category_name, c.category_name, ARRAY_AGG(t.name) AS tags FROM items i
+	// 	FULL JOIN sub_categories s ON i.sub_category_id = s.id
+	// 	FULL JOIN categories c ON s.category_id = c.id
+	// 	FULL JOIN item_tags it ON i.id = it.item_id
+	// 	FULL JOIN tags t ON t.id = it.tag_id
+	// 	GROUP BY i.id, i.item_name, s.sub_category_name, c.category_name;
+	// `
+}

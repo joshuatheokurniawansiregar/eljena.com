@@ -13,6 +13,10 @@ type ItemsService interface {
 	CreateItem(ctx context.Context, itemRequest items.ItemRequest) error
 	CreateTag(context context.Context, tagRequest items.TagRequest) error
 	CreateItemTag(context context.Context, itemTagRequest items.ItemTagRequest) error
+
+	GetCategories(ctx context.Context) ([]items.CategoriesResponse, error)
+	GetSubCategories(ctx context.Context) ([]items.SubCategoriesResponse, error)
+	GetItemsForCarousel()
 }
 
 type Handler struct{
@@ -30,8 +34,13 @@ func NewHandler(app *fiber.App, itemsService ItemsService)*Handler{
 func(h *Handler) RegisterRoute(){
 	var groupRouter fiber.Router = h.Group("/api/v1")
 	groupRouter.Post("/categories", h.CreateCategory)
+	groupRouter.Get("/categories", h.GetCategories)
+
 	groupRouter.Post("/sub_categories", h.CreateSubCategory)
+	groupRouter.Get("/sub_categories", h.GetSubCategories)
+
 	groupRouter.Post("/items", h.CreateItem)
 	groupRouter.Post("/tags", h.CreateTag)
 	groupRouter.Post("/item_tags", h.CreateItemTag)
+
 }
