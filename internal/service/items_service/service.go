@@ -15,7 +15,7 @@ type ItemsRepository interface {
 
 	GetCategories(ctx context.Context) ([]items.CategoriesResponse , error)
 	GetSubCategories(ctx context.Context)([]items.SubCategoriesResponse, error)
-	GetItemsForCarousel()
+	GetItemsForCarousel(ctx context.Context)([]items.CarouselDataResponse, error)
 }
 
 type Service struct{

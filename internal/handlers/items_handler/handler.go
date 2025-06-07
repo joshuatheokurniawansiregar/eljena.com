@@ -10,13 +10,13 @@ import (
 type ItemsService interface {
 	CreateCategory(ctx context.Context, categoryReq items.CategoriesRequest)error
 	CreateSubCategory(ctx context.Context, subCategoryRequest items.SubCategoriesRequest) error
-	CreateItem(ctx context.Context, itemRequest items.ItemRequest) error
+	CreateItem(ctx context.Context, itemRequest items.ItemRequest, itemImageUrl string) error
 	CreateTag(context context.Context, tagRequest items.TagRequest) error
 	CreateItemTag(context context.Context, itemTagRequest items.ItemTagRequest) error
 
 	GetCategories(ctx context.Context) ([]items.CategoriesResponse, error)
 	GetSubCategories(ctx context.Context) ([]items.SubCategoriesResponse, error)
-	GetItemsForCarousel()
+	GetItemsForCarousel(ctx context.Context) ([]items.CarouselDataResponse, error)
 }
 
 type Handler struct{
@@ -40,7 +40,10 @@ func(h *Handler) RegisterRoute(){
 	groupRouter.Get("/sub_categories", h.GetSubCategories)
 
 	groupRouter.Post("/items", h.CreateItem)
+	groupRouter.Get("/items", h.GetItemsForCarousel)
+
 	groupRouter.Post("/tags", h.CreateTag)
+	
 	groupRouter.Post("/item_tags", h.CreateItemTag)
 
 }

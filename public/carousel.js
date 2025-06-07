@@ -1,9 +1,12 @@
 document.addEventListener("DOMContentLoaded", async function () {
   getCarousel();
+  console.log(window.location.href);
 });
 
 async function getCarousel() {
-  const url = "http://localhost:3000/api/v1/carousel";
+  // const url = "http://localhost:3000/api/v1/carousel";
+  const url = "http://localhost:3000/api/v1/items";
+
   const carouselImage = document.getElementById("carousel-image");
 
   const carouselItemNameTag = document.getElementById("carousel-item-name");
@@ -24,19 +27,21 @@ async function getCarousel() {
       throw new Error(`Response status: ${response.status}`);
     }
     const json = await response.json();
-    json.forEach((value) => {
-      const { imageUrl, itemName, description, subCategory, tags } = value;
-
+    console.log(json.data);
+    json.data.forEach((value) => {
+      const { itemImageUrl, itemName, itemDescription, subCategoryName, tags } =
+        value;
+      var imageURL = window.location.href + itemImageUrl;
       const imagesElement = document.createElement("img");
-      imagesElement.src = imageUrl;
+      imagesElement.src = imageURL;
       imagesElement.classList = "w-full min-h-full";
       carouselImage.appendChild(imagesElement);
 
       itemNameArray.push(itemName);
 
-      subCategoryArray.push(subCategory);
+      subCategoryArray.push(subCategoryName);
 
-      descriptionArray.push(description);
+      descriptionArray.push(itemDescription);
 
       tagsArray.push(tags);
     });
